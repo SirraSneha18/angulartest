@@ -37,6 +37,9 @@ jobs:
       - name: Save output path to file
         run: echo "ANGULAR_OUTPUT_PATH=${{ github.workspace }}/dist/angulartest" >> $GITHUB_ENV
 
+      - name: List files in ANGULAR_OUTPUT_PATH
+        run: ls -l ${{ env.ANGULAR_OUTPUT_PATH }}
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
