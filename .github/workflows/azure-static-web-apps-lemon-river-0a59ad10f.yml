@@ -30,9 +30,12 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: |
-          npm run build -- --configuration=production
-          echo "::set-env name=ANGULAR_OUTPUT_PATH::$(pwd)/dist/angulartest"
+        run: npm run build -- --configuration=production
+        env:
+          ANGULAR_OUTPUT_PATH: ${{ github.workspace }}/dist/angulartest
+
+      - name: Save output path to file
+        run: echo "ANGULAR_OUTPUT_PATH=${{ github.workspace }}/dist/angulartest" >> $GITHUB_ENV
 
       - name: Build And Deploy
         id: builddeploy
