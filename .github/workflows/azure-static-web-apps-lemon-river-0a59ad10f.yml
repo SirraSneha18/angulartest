@@ -21,6 +21,9 @@ jobs:
           submodules: true
           lfs: false
 
+      - name: Clear npm cache
+        run: npm cache clean --force
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -32,7 +35,7 @@ jobs:
       - name: Build Angular app
         run: npm run build -- --configuration=production
         env:
-          ANGULAR_OUTPUT_PATH: dist/angulartest # Replace with your Angular output path
+          ANGULAR_OUTPUT_PATH: dist/angulartest
 
       - name: Build And Deploy
         id: builddeploy
