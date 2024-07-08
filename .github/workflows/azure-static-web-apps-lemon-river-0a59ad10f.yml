@@ -32,10 +32,10 @@ jobs:
       - name: Build Angular app
         run: npm run build -- --configuration=production
         env:
-          ANGULAR_OUTPUT_PATH: ${{ github.workspace }}/dist/angulartest
+          ANGULAR_OUTPUT_PATH: ${{ github.workspace }}/dist/angulartest/browser
 
       - name: Save output path to file
-        run: echo "ANGULAR_OUTPUT_PATH=${{ github.workspace }}/dist/angulartest" >> $GITHUB_ENV
+        run: echo "ANGULAR_OUTPUT_PATH=${{ github.workspace }}/dist/angulartest/browser" >> $GITHUB_ENV
 
       - name: List files in ANGULAR_OUTPUT_PATH
         run: ls -l ${{ env.ANGULAR_OUTPUT_PATH }}
