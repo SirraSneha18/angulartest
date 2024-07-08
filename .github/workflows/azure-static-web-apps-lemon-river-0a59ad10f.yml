@@ -15,10 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
           submodules: true
           lfs: false
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -30,7 +32,7 @@ jobs:
       - name: Build Angular app
         run: npm run build -- --configuration=production
         env:
-          ANGULAR_OUTPUT_PATH: ${{ env.ANGULAR_OUTPUT_PATH }}
+          ANGULAR_OUTPUT_PATH: dist/angulartest # Replace with your Angular output path
 
       - name: Build And Deploy
         id: builddeploy
